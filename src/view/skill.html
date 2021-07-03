@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skill</title>
+    <link rel="stylesheet" href="/src/assets/style.css">
+    <link rel="stylesheet" href="/src/assets/mytopnav.css">
+</head>
+<body>
+
+<div class="topnav">
+    <a href="/">Members</a>
+    <a href="/projects">Projects</a>
+    <a href="/skills">Skills</a>
+    <a href="/about">About</a>
+</div>
+
+<h1 class="h1_left">Skill <{{.Skill}}></h1>
+
+<table class="item_table">
+    <tr>
+        <th>Id:</th>
+        <td>{{.Id}}</td>
+    </tr>
+    <tr>
+        <th>Skill:</th>
+        <td>{{.Skill}}</td>
+    </tr>
+    <tr>
+        <th>Members:</th>
+        <td>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+
+                {{range .Members}}
+                <tr>
+                    <td>
+                        <form action="/member" method="POST">
+                            <button class="link_button" type="submit" name="member_id" value={{.Id}}>{{.UserName}}
+                            </button>
+                        </form>
+                    </td>
+                    <td>{{.Email}}</td>
+                </tr>
+                {{end}}
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project</title>
+    <link rel="stylesheet" href="/src/assets/style.css">
+    <link rel="stylesheet" href="/src/assets/mytopnav.css">
+</head>
+<body>
+
+<div class="topnav">
+    <a href="/">Members</a>
+    <a href="/projects">Projects</a>
+    <a href="/skills">Skills</a>
+    <a href="/about">About</a>
+</div>
+
+<h1 class="h1_left">Project <{{.ProjectName}}></h1>
+
+<table class="item_table">
+    <tr>
+        <th>ProjectName:</th>
+        <td>{{.ProjectName}}</td>
+    </tr>
+    <tr>
+        <th>Budget:</th>
+        <td>{{.Budget}}</td>
+    </tr>
+    <tr>
+        <th>EndTill:</th>
+        <td>{{.EndTill}}</td>
+    </tr>
+    <tr>
+        <th>Participants:</th>
+        <td>
+            <table>
+                <tr>
+                    <th>UserName</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>ItExpYears</th>
+                </tr>
+
+                {{range .GetMembers}}
+                <tr>
+                    <td>
+                        <form action="/member" method="POST">
+                            <button class="link_button" type="submit" name="member_id" value={{.Id}}>{{.UserName}}
+                            </button>
+                        </form>
+                    </td>
+                    <td>{{.Email}}</td>
+                    <td>{{.Address}}</td>
+                    <td>{{.ItExpYears}}</td>
+                </tr>
+                {{end}}
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ItBay</title>
+    <link rel="stylesheet" href="/src/assets/style.css">
+    <link rel="stylesheet" href="/src/assets/mytopnav.css">
+</head>
+
+<!--******************************************************************-->
+
+<body>
+
+<div class="topnav">
+    <a href="/">Members</a>
+    <a href="/projects">Projects</a>
+    <a href="/skills">Skills</a>
+    <a href="/about">About</a>
+</div>
+
+<h1>ItBay! Welcome to IT community!</h1>
+
+<table class="main_table">
+    <tr>
+        <th>UserName</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>ItExpYears</th>
+        <th>RegData</th>
+        <th>AdditionalInfo</th>
+    </tr>
+
+    {{range .}}
+    <tr>
+        <td>
+            <form action="/member" method="POST">
+                <button class="link_button" type="submit" name="member_id" value={{.Id}}>{{.UserName}}</button>
+            </form>
+        </td>
+        <td>{{.Email}}</td>
+        <td>{{.Address}}</td>
+        <td>{{.ItExpYears}}</td>
+        <td>{{.RegData}}</td>
+        <td>{{.AddInfo}}</td>
+    </tr>
+    {{end}}
+</table>
+</body>
+
+<!--******************************************************************-->
+
+</html>

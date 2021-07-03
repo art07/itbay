@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member</title>
+    <link rel="stylesheet" href="/src/assets/style.css">
+    <link rel="stylesheet" href="/src/assets/mytopnav.css">
+</head>
+<body>
+
+<div class="topnav">
+    <a href="/">Members</a>
+    <a href="/projects">Projects</a>
+    <a href="/skills">Skills</a>
+    <a href="/about">About</a>
+</div>
+
+<h1 class="h1_left">Member <{{.UserName}}></h1>
+
+<table class="item_table">
+    <tr>
+        <th>UserName:</th>
+        <td>{{.UserName}}</td>
+    </tr>
+    <tr>
+        <th>Email:</th>
+        <td>{{.Email}}</td>
+    </tr>
+    <tr>
+        <th>Address:</th>
+        <td>{{.Address}}</td>
+    </tr>
+    <tr>
+        <th>Experience in IT (years):</th>
+        <td>{{.ItExpYears}}</td>
+    </tr>
+    <tr>
+        <th>RegData:</th>
+        <td>{{.RegData}}</td>
+    </tr>
+    <tr>
+        <th>ProjectName:</th>
+        <td>
+            <form action="/project" method="POST">
+                <button class="link_button" type="submit" name="project_id" value={{.MemberPjt.Id}}>{{.MemberPjt.ProjectName}}</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <th>AddInfo:</th>
+        <td>{{.AddInfo}}</td>
+    </tr>
+    <tr>
+        <th>Skills:</th>
+        <td>
+            {{range .Skills}}
+            <form action="/skill" method="POST">
+                <button class="link_button" type="submit" name="skill_id" value={{.Id}}>{{.Skill}}</button>
+            </form>
+            {{end}}
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
