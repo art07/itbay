@@ -3,7 +3,6 @@ package main
 
 import (
 	"art/web/itbay/src/controller"
-	"github.com/joho/godotenv"
 	"log"
 	"net/http"
 	"os"
@@ -27,15 +26,15 @@ func initHandlers(serverMux *http.ServeMux) {
 }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Println("error loading .env file")
-	}
+	/*	err := godotenv.Load()
+		if err != nil {
+			log.Println("error loading .env file")
+		}
 
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "3000"
-	}
+		port := os.Getenv("PORT")
+		if port == "" {
+			port = "3000"
+		}*/
 
 	var serverMux *http.ServeMux
 	serverMux = http.NewServeMux()
@@ -46,5 +45,6 @@ func main() {
 	//db.CreateEntries()
 	/*DB JOB! -----------------------------------------------------------------*/
 
-	log.Fatal(http.ListenAndServe(":"+port, serverMux))
+	//log.Fatal(http.ListenAndServe(":"+port, serverMux))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), serverMux))
 }
