@@ -1,3 +1,8 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #333;

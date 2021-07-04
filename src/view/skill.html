@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<!--https://2016.8-p.info/post/06-18-go-html-template/-->
 <!--suppress HtmlUnknownTarget -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Skill</title>
+    <link rel="icon" type="image/png" href="/favicon.png"/>
     <link rel="stylesheet" href="/src/assets/style.css">
     <link rel="stylesheet" href="/src/assets/mytopnav.css">
 </head>
@@ -16,7 +18,11 @@
     <a href="/about">About</a>
 </div>
 
-<h1 class="h1_left">Skill <{{.Skill}}></h1>
+{{if ne .Skill "HTML/CSS/JS"}}
+<h1 class="h1_left">Skill> {{.Skill}}</h1>
+{{else}}
+<h1 class="h1_left">Skill> HTML/CSS/<a href="/snake">JS</a></h1>
+{{end}}
 
 <table class="item_table">
     <tr>

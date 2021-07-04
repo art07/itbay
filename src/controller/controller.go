@@ -48,6 +48,11 @@ func AboutInfo(resWriter http.ResponseWriter, request *http.Request) {
 	_ = htmlTpl.Execute(resWriter, nil)
 }
 
-func FaviconHandler(resWriter http.ResponseWriter, request *http.Request) {
+func Snake(resWriter http.ResponseWriter, request *http.Request) {
+	htmlTpl := template.Must(template.ParseFiles("src/view/snake.html"))
+	_ = htmlTpl.Execute(resWriter, nil)
+}
 
+func FaviconHandler(resWriter http.ResponseWriter, request *http.Request) {
+	http.ServeFile(resWriter, request, "favicon.png")
 }
