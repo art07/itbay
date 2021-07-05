@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<!--suppress HtmlUnknownTarget -->
+<!--suppress HtmlUnknownTarget, HtmlFormInputWithoutLabel -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Projects</title>
     <link rel="icon" type="image/png" href="/favicon.png"/>
-    <link rel="stylesheet" href="/src/assets/style.css">
+    <link rel="stylesheet" href="/src/assets/mystyle.css">
     <link rel="stylesheet" href="/src/assets/mytopnav.css">
 </head>
 
 <!--******************************************************************-->
 
-<body>
+<body class="body">
 
 <div class="topnav">
     <a href="/">Members</a>
@@ -20,7 +20,20 @@
     <a href="/about">About</a>
 </div>
 
-<h1>Projects</h1>
+<h1 class="main_text">Projects</h1>
+
+<div class="for_input">
+    <form action="/add_project" method="POST">
+        <input type="text" name="project_name" placeholder="Enter project name"
+               pattern="^[A-Za-z]{3,}$" required>
+        <input type="number" name="project_budget" placeholder="Enter budget"
+               pattern="[0-9]{3,}">
+        <input type="date" name="end_till" value="2021-07-01" min="2021-01-01"
+               max="2030-12-31">
+        <input value="Add project" type="submit">
+        <input value="Clear" type="reset">
+    </form>
+</div>
 
 <table class="main_table">
     <tr>
@@ -28,13 +41,14 @@
         <th>Budget</th>
         <th>EndTill</th>
         <th>UserName</th>
+        <th>Delete project</th>
     </tr>
 
     {{range .}}
     <tr>
         <td>
             <form action="/project" method="POST">
-                <button class="link_button" type="submit" name="project_id" value={{.Id}}>{{.ProjectName}}</button>
+                <button class="link_button" type="submit" name="project_id" value="{{.Id}}">{{.ProjectName}}</button>
             </form>
         </td>
         <td>{{.Budget}}</td>
@@ -42,8 +56,17 @@
         <td>
             {{range .GetMembers}}
             <form action="/member" method="POST">
-                <button class="link_button" type="submit" name="member_id" value={{.Id}}>{{.UserName}}</button>
+                <button class="link_button" type="submit" name="member_id" value="{{.Id}}">{{.UserName}}</button>
             </form>
+            {{end}}
+        </td>
+        <td>
+            {{if ne .ProjectName "Freelance"}}
+            <form action="/del_pjt" method="POST">
+                <button type="submit" name="pjt_id" value="{{.Id}}">Del</button>
+            </form>
+            {{else}}
+            Freelance never die!
             {{end}}
         </td>
     </tr>

@@ -43,7 +43,9 @@ func GetSkill(id int) Skill {
 		if skill.Skill == "" {
 			skill = s
 		}
-		skill.Members = append(skill.Members, m)
+		if m.UserName != "" {
+			skill.Members = append(skill.Members, m)
+		}
 	}
 	return skill
 }

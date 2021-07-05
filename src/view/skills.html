@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<!--suppress HtmlUnknownTarget -->
+<!--suppress HtmlUnknownTarget, HtmlFormInputWithoutLabel -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Skills</title>
     <link rel="icon" type="image/png" href="/favicon.png"/>
-    <link rel="stylesheet" href="/src/assets/style.css">
+    <link rel="stylesheet" href="/src/assets/mystyle.css">
     <link rel="stylesheet" href="/src/assets/mytopnav.css">
 </head>
 
 <!--******************************************************************-->
 
-<body>
+<body class="body">
 
 <div class="topnav">
     <a href="/">Members</a>
@@ -20,15 +20,42 @@
     <a href="/about">About</a>
 </div>
 
-<h1 class="h1_left">Skills</h1>
+<h1 class="main_text">Skills</h1>
 
-{{range .}}
-<div>
-    <form action="/skill" method="POST">
-        <button class="link_button" type="submit" name="skill_id" value={{.Id}}>{{.Skill}}</button>
+<div class="for_input">
+    <form action="/add_skill" method="POST">
+        <label for="name"></label>
+        <input type="text" id="name" name="signature" placeholder="Enter new skill"
+               pattern="^[A-Za-z]{1,20}$" required>
+        <input value="Add skill" type="submit">
+        <input value="Clear" type="reset">
     </form>
 </div>
-{{end}}
+
+<table class="item_table">
+    {{range .}}
+    <tr>
+        <td>
+            <form action="/skill" method="POST">
+                <button class="link_button" type="submit" name="skill_id" value="{{.Id}}">{{.Skill}}</button>
+            </form>
+        </td>
+        <td>
+            <form action="/del_skill" method="POST">
+                <button type="submit" name="skill_id" value="{{.Id}}">Del</button>
+            </form>
+        </td>
+        <td>
+            <form action="/upd_skill" method="POST">
+                <input type="hidden" name="skill_id" value="{{.Id}}"/>
+                <input type="text" name="new_skill_name" placeholder="New skill name"
+                       pattern="^[A-Za-z]{1,20}$" required>
+                <input value="Upd" type="submit">
+            </form>
+        </td>
+    </tr>
+    {{end}}
+</table>
 
 </body>
 

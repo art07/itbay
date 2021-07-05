@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <title>ItBay</title>
     <link rel="icon" type="image/png" href="/favicon.png"/>
-    <link rel="stylesheet" href="/src/assets/style.css">
+    <link rel="stylesheet" href="/src/assets/mystyle.css">
     <link rel="stylesheet" href="/src/assets/mytopnav.css">
 </head>
 
 <!--******************************************************************-->
 
-<body>
+<body class="body">
 
 <div class="topnav">
     <a href="/">Members</a>
@@ -20,7 +20,7 @@
     <a href="/about">About</a>
 </div>
 
-<h1>ItBay! Welcome to IT community!</h1>
+<h1 class="main_text">ItBay! Welcome to IT community!</h1>
 
 <table class="main_table">
     <tr>
@@ -36,7 +36,7 @@
     <tr>
         <td>
             <form action="/member" method="POST">
-                <button class="link_button" type="submit" name="member_id" value={{.Id}}>{{.UserName}}</button>
+                <button class="link_button" type="submit" name="member_id" value="{{.Id}}">{{.UserName}}</button>
             </form>
         </td>
         <td>{{.Email}}</td>

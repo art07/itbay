@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!--suppress HtmlUnknownTarget -->
+<!--suppress HtmlUnknownTarget, HtmlFormInputWithoutLabel -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Project</title>
     <link rel="icon" type="image/png" href="/favicon.png"/>
-    <link rel="stylesheet" href="/src/assets/style.css">
+    <link rel="stylesheet" href="/src/assets/mystyle.css">
     <link rel="stylesheet" href="/src/assets/mytopnav.css">
 </head>
 <body>
@@ -17,7 +17,21 @@
     <a href="/about">About</a>
 </div>
 
-<h1 class="h1_left">Project <{{.ProjectName}}></h1>
+<h1 class="main_text">Project <{{.ProjectName}}></h1>
+
+<div class="for_input">
+    <form action="/upd_pjt" method="POST">
+        <input type="hidden" name="project_id" value="{{.Id}}"/>
+        <input type="text" name="project_name" placeholder="Enter new project name"
+               pattern="^[A-Za-z]{3,}$" required>
+        <input type="number" name="project_budget" placeholder="Enter new budget"
+               pattern="[0-9]{3,}">
+        <input type="date" name="end_till" value="2021-07-01" min="2021-01-01"
+               max="2030-12-31">
+        <input value="Update project" type="submit">
+        <input value="Clear" type="reset">
+    </form>
+</div>
 
 <table class="item_table">
     <tr>

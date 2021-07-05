@@ -7,7 +7,7 @@ import (
 
 //goland:noinspection GoUnhandledErrorResult
 func GetAllMembers() []Member {
-	itbayDb, _ := sql.Open("sqlite3", "itbay.db")
+	itbayDb, _ := sql.Open("sqlite3", "file:itbay.db")
 	defer itbayDb.Close()
 
 	dbRows, _ := itbayDb.Query(

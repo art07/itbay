@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Member</title>
     <link rel="icon" type="image/png" href="/favicon.png"/>
-    <link rel="stylesheet" href="/src/assets/style.css">
+    <link rel="stylesheet" href="/src/assets/mystyle.css">
     <link rel="stylesheet" href="/src/assets/mytopnav.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
     <a href="/about">About</a>
 </div>
 
-<h1 class="h1_left">Member <{{.UserName}}></h1>
+<h1 class="main_text">Member <{{.UserName}}></h1>
 
 <table class="item_table">
     <tr>
@@ -57,7 +57,7 @@
         <td>
             {{range .Skills}}
             <form action="/skill" method="POST">
-                <button class="link_button" type="submit" name="skill_id" value={{.Id}}>{{.Skill}}</button>
+                <button class="link_button" type="submit" name="skill_id" value="{{.Id}}">{{.Skill}}</button>
             </form>
             {{end}}
         </td>

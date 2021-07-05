@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Skill</title>
     <link rel="icon" type="image/png" href="/favicon.png"/>
-    <link rel="stylesheet" href="/src/assets/style.css">
+    <link rel="stylesheet" href="/src/assets/mystyle.css">
     <link rel="stylesheet" href="/src/assets/mytopnav.css">
 </head>
 <body>
@@ -19,9 +19,9 @@
 </div>
 
 {{if ne .Skill "HTML/CSS/JS"}}
-<h1 class="h1_left">Skill> {{.Skill}}</h1>
+<h1 class="main_text">Skill> {{.Skill}}</h1>
 {{else}}
-<h1 class="h1_left">Skill> HTML/CSS/<a href="/snake">JS</a></h1>
+<h1 class="main_text">Skill> HTML/CSS/<a href="/snake">JS</a></h1>
 {{end}}
 
 <table class="item_table">
@@ -36,7 +36,7 @@
     <tr>
         <th>Members:</th>
         <td>
-            <table>
+            <table class="item_table">
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
@@ -46,7 +46,7 @@
                 <tr>
                     <td>
                         <form action="/member" method="POST">
-                            <button class="link_button" type="submit" name="member_id" value={{.Id}}>{{.UserName}}
+                            <button class="link_button" type="submit" name="member_id" value="{{.Id}}">{{.UserName}}
                             </button>
                         </form>
                     </td>
